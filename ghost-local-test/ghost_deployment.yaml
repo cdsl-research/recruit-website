@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-dep
+  labels:
+    app: ghost
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:3-alpine
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 2368
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: ghost-storage
+      volumes:
+      - name: ghost-storage
+        persistentVolumeClaim:
+          claimName: ghost-pvc
