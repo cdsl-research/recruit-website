@@ -1,0 +1,1 @@
+CDSLのrudder-1のk3sで動作しているghostのyamlデータです
