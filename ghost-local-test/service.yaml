@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost-service
+  namespace: ghost
+spec:
+  type: LoadBalancer
+  selector:
+    app: ghost
+  ports:
+  - protocol: TCP
+    port: 2368
+    #targetPort: 2368
+  #type: ClusterIP
+  #externalIPs:
+   # - 192.168.210.21
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ghost
+  namespace: ghost
+spec:
+  selector:
+    matchLabels:
+      app: ghost
+  serviceName: "ghost"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:3-alpine
+        env:
+        - name: url
+          value: "http://localhost:2368"
+          #value: "http://rudder.tak-cslab.org/2020-ug3/"
+        - name: mail__transport
+          value: "SMTP"
+        - name: mail__options__service
+          value: "Mailgun"
+        - name: mail__options__host
+          value: "smtp.mailgun.org"
+        - name: mail__options__port
+          value: "587"
+        - name: mail__options__secureConnection
+          value: "false"
+        - name: mail__options__auth__user
+          value: "postmaster@sandboxbd86671a32244f3b83860c66229396bb.mailgun.org"
+        - name: mail__options__auth__pass
+          value: "082186418ef5991b123f6a3dcb3a9e3a-8b34de1b-5a7e7498"
+        ports:
+        - containerPort: 2368
+          name: ghost
+        volumeMounts:
+        - name: ghost-pvc
+          mountPath: /var/lib/ghost/content
+  volumeClaimTemplates:
+  - metadata:
+      name: ghost-pvc
+      namespace: ghost
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "ghost-storage"
+      resources:
+        requests:
+          storage: 1Gi
