@@ -1,0 +1,248 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+<header class="site-home-header">
+    {{> header-background background=@site.cover_image}}
+    {{!--Special header-image.hbs partial to generate the background image--}}
+    <div class="inner">
+        {{> "site-nav"}}
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {{#if @site.logo}}
+                <img class="site-logo" src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" />
+                {{else}}
+                {{@site.title}}
+                {{/if}}
+            </h1>
+            <h2 class="site-description">{{@site.description}}</h2>
+        </div>
+    </div>
+    </div>
+</header>
+
+{{!-- The main content area --}}
+<main id="site-main" class="site-main outer">
+    <div class="cdsl-feed">
+        <div class="catch-content">
+            <h1 class="catchcopy">技術革新</h1>
+            <p class="catch-disc"><b>
+                    CDSL(Cloud and Distributed Systems Laboratory)は、クラウド・IoTの力を駆使してより良い社会を実現するための技術革新を目指し、日々活動しています<br>
+                    私たちに必要な仲間は、全能の技術者ではありません。同じ方向を向いて積極的に情熱を持って活動に取り組んでくれる人です<br>
+                    配属時の知識量、技術力は問いません。やりたい事がある人、本研究室が取り扱っている分野で何かを成し遂げてみたい、挑戦してみたいという<br>
+                    熱意と積極的な姿勢を持った人の参加を待っています
+                </b></p>
+        </div>
+
+        <div class="cdsl-Intro-content">
+            <div>
+                <h1 class="sectiont-title">What is CDSL ?</h1>
+            </div>
+            <div class="cdsl-Intro">
+                <div class="cdsl-Intro-slider">
+                    <div class="slider">
+                        <img src="images/desk.png" alt="研究室内の様子">
+                        <img src="images/server1.png" alt="研究室で使用しているサーバPC">
+                        <img src="images/iot.png" alt="iot">
+                        <img src="images/mtgspace.png" alt="ミーティングスペース">
+                    </div>
+                </div>
+                <p>本研究室では，「クラウド関連技術・センサとクラウドの統合管理技術、システム管理の効率化と自動化技術・広域分散システムと分散処理技術」を研究テーマに設定し、ソサエティ 5.0 の IT
+                    基盤技術であるクラウドと IoT にフォーカスして、技術革新をめざしてセンサ・クラウド統合システム管理の実用的な研究を進めています.<br>
+                    活動を始めてまだ間もない研究室ではありますが、積極的に活動しています!近年、クラウドやIoTの注目度、需要は高まりつつあります.未来の社会の基盤ともなる分野の研究に興味はありませんか？<br><br>
+                    え？ クラウドとかIoTとかセンサとかよくわからない？ 無問題！ 大事なのは配属前の知識の量ではなく、積極的に学習・研究活動をする姿勢だと考えています。<br>
+                    あなたのありのままの興味関心探求心と積極性こそ私達が歓迎するものです。期間中は見学会を設けていますので是非一度、本研究室にお立ち寄りください.<br>
+                </p>
+                <strong>
+                    <font size="5">研究室情報</font>
+                </strong><br>
+                教員：<a href="https://www.teu.ac.jp/info/lab/teacher/cs/index.html?id=1733" target="_blank"
+                    rel="noopener noreferrer">串田　高幸</a><br>
+                場所：研究棟A 0910号室<br>
+                発足：2019年<br>
+
+            </div>
+        </div>
+
+        <div class="cdsl-Intro-content">
+            <div>
+                <h1 class="sectiont-title">Keyword</h1>
+            </div>
+            <div class="cdsl-Intro">
+                <div class="cloud-intro">
+                    <img src="images/server.png" alt="IoT"><br><br>
+                    <p><strong>
+                            <font size="7">クラウド</font>
+                        </strong></p>
+
+                </div>
+
+                <div class="IoT-intro">
+                    <img src="images/iot2.png" alt="IoT"><br><br>
+                    <p><strong>
+                            <font size="7">IoT</font>
+                        </strong></p>
+                </div>
+                <br class="clear-float">
+                <strong>
+                    <font size="6">その他</font>
+                </strong><br>
+                サービス・コンピューティング、システム管理、分散システム、ライフサイクル管理、統合センサー管理のアーキテクチャと設計、分散アルゴリズム、統合システム管理用のGUI、センサー関連、
+                ログ管理、原因分析、異常検知、認証・認可 etc...
+            </div>
+        </div>
+
+        <div class="cdsl-Intro-content">
+            <div>
+                <h1 class="sectiont-title">コンテンツ・リンク</h1><br>
+            </div>
+            <div class="cdsl-Intro">
+                <div class="cont-left">
+                    <a href="https://qiita.com/organizations/cdsl" target="_blank" rel="noopener noreferrer"><img
+                            src="images/qiita_top.png" width="450" alt="Qiita"></a><br>
+                    <p>本研究室のQiita Organizationです.</p>
+                </div>
+
+                <div class="cont-right">
+                    <a href="https://github.com/cdsl-research" target="_blank" rel="noopener noreferrer"><img
+                            src="images/GitHub.png" width="450" alt="github"></a><br>
+                    <p>本研究室のGitHub Organizationです.</p>
+                </div>
+                {{!--
+                <div class="movie">
+                    <p>動画設置予定地</p>
+                    <p>この研究室で半年ほど活動したメンバーへのインタビュー動画です。</p>
+                </div>
+                --}}
+                <div>
+                    <p>
+                        CDSLでは、ただ活動するだけでなく、活動の成果を外部に公開する事にも力を入れています。上記のような技術系サイトへの投稿はもちろんの事、
+                        　 学会発表のチャンスも平等に与えられます。
+                    </p>
+                </div>
+
+                <p>
+                    <strong>
+                        <font size="6">その他</font>
+                    </strong><br>
+                    <a href="https://www.teu.ac.jp/info/lab/project/com/dep.html?id=190" target="_blank"
+                        rel="noopener noreferrer">
+                        <font size="5">・研究室紹介(大学公式サイト)</font>
+                    </a><br>
+                    <a href="https://www.tak-cslab.org/" target="_blank" rel="noopener noreferrer">
+                        <font size="5">・CDSL 英語サイト</font>
+                    </a><br>
+                    <a href="https://ja.tak-cslab.org/" target="_blank" rel="noopener noreferrer">
+                        <font size="5">・CDSL 研究室サイト</font>
+                    </a><br>
+                </p>
+            </div>
+        </div>
+
+        <div class="cdsl-Intro-content">
+            <div>
+                <h1 class="sectiont-title">説明会（遠隔会議）スケジュール</h1>
+            </div>
+            <div class="cdsl-Intro">
+                <p class="entry-form"><strong>
+                        <font size="10">6月22日(月) ～ 7月17日(金)</font>
+                    </strong></p>
+            </div>
+        </div>
+
+
+        <div class="cdsl-Intro-content">
+            <div class="entry">
+                <h1 class="sectiont-title">説明会（遠隔会議）申し込み</h1>
+                <p>下のリンクから説明会の申し込みを行うことが出来ます。沢山の申し込みお待ちしてます！</p><br>
+                <p class="entry-form"><a
+                        href="https://docs.google.com/forms/d/1O7jbMYIXVW3rLdWNAp20adr1fsi-Rdtkhv5kTC43YCw/"
+                        target="_blank" rel="noopener noreferrer"><strong>
+                            <font size="10">⇒説明会申し込みはこちらから</font>
+                        </strong></a></p>
+            </div>
+        </div>
+        <br>
+        <div class="cdsl-Intro-content">
+            <div>
+                <h1 class="sectiont-title">最新情報</h1>
+            </div>
+        </div>
+
+        <div class="inner posts">
+
+            <div class="post-feed">
+                {{#foreach posts}}
+
+                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+                {{> "post-card"}}
+
+                {{/foreach}}
+            </div>
+
+        </div>
+    </div>
+</main>
+
+{{> site-header}}
+
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+{{#contentFor "scripts"}}
+<script>
+
+    // NOTE: Scroll performance is poor in Safari
+    // - this appears to be due to the events firing much more slowly in Safari.
+    //   Dropping the scroll event and using only a raf loop results in smoother
+    //   scrolling but continuous processing even when not scrolling
+    $(document).ready(function () {
+
+        var nav = document.querySelector('.site-nav-main .site-nav');
+        var feed = document.querySelector('.post-feed');
+        var cdsl_feed = document.querySelector('.cdsl-feed')//下スクロール時にもヘッダー内の要素を出すため
+
+        var lastScrollY = window.scrollY;
+        var lastWindowHeight = window.innerHeight;
+        var lastDocumentHeight = $(document).height();
+        var ticking = false;
+
+        function onScroll() {
+            lastScrollY = window.scrollY;
+            requestTick();
+        }
+
+        function onResize() {
+            lastWindowHeight = window.innerHeight;
+            lastDocumentHeight = $(document).height();
+            requestTick();
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(update);
+            }
+            ticking = true;
+        }
+
+        function update() {
+            //var trigger = feed.getBoundingClientRect().top + window.scrollY;//元はこっち
+            var trigger = cdsl_feed.getBoundingClientRect().top + window.scrollY;
+            var progressMax = lastDocumentHeight - lastWindowHeight;
+
+            // show/hide nav
+            if (lastScrollY >= trigger) {
+                nav.classList.add('fixed-nav-active');
+            } else {
+                nav.classList.remove('fixed-nav-active');
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize, false);
+
+        update();
+
+    });
+</script>
+{{/contentFor}}
