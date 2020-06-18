@@ -50,9 +50,9 @@ spec:
         - name: mail__options__secureConnection
           value: "false"
         - name: mail__options__auth__user
-          value: "postmaster@sandboxbd86671a32244f3b83860c66229396bb.mailgun.org"
+          value: "postmaster@sandbox000000000000000000000000000000.mailgun.org"
         - name: mail__options__auth__pass
-          value: "082186418ef5991b123f6a3dcb3a9e3a-8b34de1b-5a7e7498"
+          value: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
         ports:
         - containerPort: 2368
           name: ghost
