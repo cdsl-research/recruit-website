@@ -1,0 +1,7 @@
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=cdsl-site2021
+resources:
+  - mysql.yaml
+  - wordpress.yaml
