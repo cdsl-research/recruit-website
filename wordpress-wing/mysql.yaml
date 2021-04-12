@@ -33,7 +33,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: mysql-storage
   hostPath:
-    path: /tmp/data/mysql
+    path: /data/mysql
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -69,12 +69,15 @@ spec:
       containers:
         - image: mysql:5.7
           name: mysql
-          env:
+          env: 
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-pass
-                  key: password
+              value: cdsl
+            - name: MYSQL_DATABASE
+              value: cdsl
+            - name: MYSQL_USER
+              value: cdsl
+            - name: MYSQL_PASSWORD
+              value: cdsl
           ports:
             - containerPort: 3306
               name: mysql

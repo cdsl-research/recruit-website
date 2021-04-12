@@ -6,15 +6,14 @@ metadata:
     app: wordpress
   name: wordpress
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: wordpress
   ports:
-    - port: 80
+    - port: 8080
       targetPort: 80
+      nodePort: 30088
       protocol: TCP
-  externalIPs:
-    - 192.168.210.21
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -37,7 +36,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: wordpress-storage
   hostPath:
-    path: /tmp/data/wordpress
+    path: /data/wordpress
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -71,18 +70,21 @@ spec:
         app: wordpress
     spec:
       containers:
-        - image: wordpress
+        - image: wordpress:php8.0-apache
           name: wordpress
           env:
-          - name: url
-            value: "https://rudder.tak-cslab.org/2021-ug3/"
           - name: WORDPRESS_DB_HOST
-            value: mysql:3306
+            value: mysql
+          - name: WORDPRESS_DB_NAME
+            value: cdsl
+          - name: WORDPRESS_DB_USER
+            value: cdsl
           - name: WORDPRESS_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-pass
-                key: password
+            value: cdsl
+          - name: WORDPRESS_CONFIG_EXTRA
+            value: |
+              define('WP_HOME', 'https://rudder.tak-cslab.org/2021-ug3/');
+              define('WP_SITEURL', 'https://rudder.tak-cslab.org/2021-ug3/');
           ports:
             - containerPort: 80
               name: wordpress
