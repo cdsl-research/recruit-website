@@ -36,7 +36,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: wordpress-storage
   hostPath:
-    path: /data/wordpress
+    path: /opt/wordpress
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -69,6 +69,15 @@ spec:
       labels:
         app: wordpress
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: sitetype
+                operator: In
+                values:
+                - wp
       containers:
         - image: wordpress:php8.0-apache
           name: wordpress

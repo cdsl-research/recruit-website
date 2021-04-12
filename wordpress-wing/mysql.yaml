@@ -33,7 +33,7 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: mysql-storage
   hostPath:
-    path: /data/mysql
+    path: /opt/mysql
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -66,6 +66,15 @@ spec:
       labels:
         app: mysql
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: dbtype
+                operator: In
+                values:
+                - mysql
       containers:
         - image: mysql:5.7
           name: mysql
