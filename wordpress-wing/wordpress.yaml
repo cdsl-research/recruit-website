@@ -85,15 +85,13 @@ spec:
           - name: WORDPRESS_DB_HOST
             value: mysql
           - name: WORDPRESS_DB_NAME
-            value: cdsl
+            value: wordpress
           - name: WORDPRESS_DB_USER
             value: cdsl
           - name: WORDPRESS_DB_PASSWORD
-            value: cdsl
+            value: d5VnYDRuNLc3
           - name: WORDPRESS_CONFIG_EXTRA
-            value: |
-              define('WP_HOME', 'https://rudder.tak-cslab.org/2021-ug3/');
-              define('WP_SITEURL', 'https://rudder.tak-cslab.org/2021-ug3/');
+            value: define('WP_HOME', 'http://rudder.tak-cslab.org/2021-ug3/'); define('WP_SITEURL', 'http://rudder.tak-cslab.org/2021-ug3/');
           ports:
             - containerPort: 80
               name: wordpress

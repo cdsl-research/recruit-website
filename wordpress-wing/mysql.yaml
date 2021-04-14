@@ -80,13 +80,13 @@ spec:
           name: mysql
           env: 
             - name: MYSQL_ROOT_PASSWORD
-              value: cdsl
+              value: d5VnYDRuNLc3
             - name: MYSQL_DATABASE
-              value: cdsl
+              value: wordpress
             - name: MYSQL_USER
               value: cdsl
             - name: MYSQL_PASSWORD
-              value: cdsl
+              value: d5VnYDRuNLc3
           ports:
             - containerPort: 3306
               name: mysql
